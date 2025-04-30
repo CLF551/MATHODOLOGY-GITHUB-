@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Math Learning Platform(Mathodology)</a>
+            <div class="ml-auto">
+                <span id="username-display" class="mr-3"></span>
+                <button class="btn btn-outline-danger logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <h2>Teacher Dashboard</h2>
+        
+        
+        <ul class="nav nav-tabs mb-4" id="teacherTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="generate-tab" data-bs-toggle="tab" data-bs-target="#generate-pane" type="button" role="tab" aria-controls="generate-pane" aria-selected="true">
+                    Generate Questions
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="history-tab" data-bs-toggle="tab" data-bs-target="#history-pane" type="button" role="tab" aria-controls="history-pane" aria-selected="false">
+                    Question History
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="performance-tab" data-bs-toggle="tab" data-bs-target="#performance-pane" type="button" role="tab" aria-controls="performance-pane" aria-selected="false">
+                    Student Performance
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="chart-tab" data-bs-toggle="tab" data-bs-target="#chart-pane" type="button" role="tab" aria-controls="chart-pane" aria-selected="false">
+                    Performance Chart
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="late-submission-tab" data-bs-toggle="tab" data-bs-target="#late-submission-pane" type="button" role="tab" aria-controls="late-submission-pane" aria-selected="false">
+                    Late Submissions
+                </button>
+            </li>
+        </ul>
+        
+        
+        <div class="tab-content" id="teacherTabContent">
+            
+            <div class="tab-pane fade show active" id="generate-pane" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Generate New Questions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group mb-3">
+                            <label for="question-grade">Grade select：</label>
+                            <select id="question-grade" class="form-select mb-3">
+                                <option value="1" selected>Primary 1</option>
+                                <option value="2">Primary 2</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="question-category">Question category：</label>
+                            <select id="question-category" class="form-select mb-3">
+                                <optgroup label="Grade 1">
+                                    <option value="numbers_to_20">Numbers to 20</option>
+                                    <option value="hard_numbers_to_20">Numbers to 20 (Advanced)</option>
+                                    <option value="basic_operations">Basic Operations</option>
+                                    <option value="hard_basic_operations">Basic Operations (Advanced)</option>
+                                    <option value="numbers_to_100">Numbers to 100</option>
+                                    <option value="hard_numbers_to_100">Numbers to 100 (Advanced)</option>
+                                    <option value="measurement">Measurement</option>
+                                    <option value="hard_measurement">Measurement (Advanced)</option>
+                                    <option value="money">HKD Money</option>
+                                    <option value="hard_money">HKD Money (Advanced)</option>
+                                    <option value="time">Time</option>
+                                    <option value="hard_time">Time (Advanced)</option>
+                                    <option value="geometry_2d">2D Shapes</option>
+                                    <option value="hard_geometry_2d">2D Shapes (Advanced)</option>
+                                    <option value="geometry_3d">3D Shapes</option>
+                                    <option value="hard_geometry_3d">3D Shapes (Advanced)</option>
+                                    <option value="positions">Positions</option>
+                                    
+                                    <option value="calendar">Calendar (Basic)</option>
+                                    <option value="hard_calendar">Calendar (Advanced)</option>
+                                </optgroup>
+                                <optgroup label="Grade 2">
+                                    <option value="p2_addition">Addition</option>
+                                    <option value="p2_hard_addition">Addition (Advanced)</option>
+                                    <option value="p2_subtraction">Subtraction</option>
+                                    <option value="p2_hard_subtraction">Subtraction (Advanced)</option>
+                                    <option value="p2_angles">Angles</option>
+                                    <option value="p2_directions">Directions</option>
+                                    <option value="p2_multiplication">Multiplication</option>
+                                    <option value="p2_hard_multiplication">Multiplication (Advanced)</option>
+                                    <option value="p2_time">Time(II)</option>
+                                    <option value="p2_date">Date</option>
+                                    <option value="p2_shapes">Shapes</option>
+                                    <option value="p2_mixed_operations">Mixed operations</option>
+                                    <option value="p2_hard_mixed_ops">Mixed operations (Advanced)</option>
+                                    <option value="p2_division">Division</option>
+                                    <option value="p2_hard_division">Division (Advanced)</option>
+                                    <option value="p2_pictograms">Pictograms</option>
+                                    <option value="p2_measurement">Measurement(Length and distance)</option>
+                                    <option value="p2_money">Money(II)</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="question-count">Questions number：</label>
+                            <select id="question-count" class="form-select">
+                                <option value="5">5 Questions</option>
+                                <option value="10" selected>10 Questions</option>
+                                <option value="15">15 questions</option>
+                                <option value="20">20 questions</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                            <div id="custom-count-container" class="mt-2" style="display: none;">
+                                <input type="number" id="custom-question-count" class="form-control" placeholder="Enter number of questions">
+                            </div>
+                        </div>
+                        <div class="col mb-3">
+                            <label for="time-limit">Time limit (seconds):</label>
+                            <select id="time-limit" class="form-select">
+                                <option value="0">No limit</option>
+                                <option value="30">30 seconds</option>
+                                <option value="60">1 minute</option>
+                                <option value="90">1.5 minutes</option>
+                                <option value="120">2 minutes</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                            <div id="custom-time-container" class="mt-2" style="display: none;">
+                                <input type="number" id="custom-time-limit" class="form-control" placeholder="Enter time in seconds">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label>Target class：</label>
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" id="class-all" value="all" checked>
+                                <label class="form-check-label" for="class-all">All Primary 1 Classes</label>
+                            </div>
+                            
+                            <div id="grade1-classes">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-1a" value="1A">
+                                    <label class="form-check-label" for="class-1a">1A</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-1b" value="1B">
+                                    <label class="form-check-label" for="class-1b">1B</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-1c" value="1C">
+                                    <label class="form-check-label" for="class-1c">1C</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-1d" value="1D">
+                                    <label class="form-check-label" for="class-1d">1D</label>
+                                </div>
+                            </div>
+                            
+                            <div id="grade2-classes" style="display: none;">
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-2a" value="2A">
+                                    <label class="form-check-label" for="class-2a">2A</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-2b" value="2B">
+                                    <label class="form-check-label" for="class-2b">2B</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-2c" value="2C">
+                                    <label class="form-check-label" for="class-2c">2C</label>
+                                </div>
+                                <div class="form-check mb-2">
+                                    <input class="form-check-input class-checkbox" type="checkbox" id="class-2d" value="2D">
+                                    <label class="form-check-label" for="class-2d">2D</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="set-name">Questions set name(Optional):</label>
+                                <input type="text" id="set-name" class="form-control" placeholder="E.g. Week 1 Questions">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="deadline">Deadline (Optional):</label>
+                                <input type="datetime-local" id="deadline" class="form-control">
+                                <small class="text-muted">Set a deadline for students to submit answers. Submissions after this time will be marked as late.</small>
+                            </div>
+                        </div>
+                        <button id="generate-questions" class="btn btn-primary">Generate New Question Set</button>
+                        <div id="questions-display" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+            
+           
+            <div class="tab-pane fade" id="history-pane" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Question History</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            
+                            <select id="history-grade-filter" class="form-select d-inline-block me-2" style="width: auto;">
+                                <option value="">All grades</option>
+                                <option value="1">Primary 1</option>
+                                <option value="2">Primary 2</option>
+                            </select>
+                            <select id="history-filter" class="form-select d-inline-block" style="width: auto;">
+                                <option value="">All category</option>
+                                <optgroup label="Grade 1">
+                                    <option value="numbers_to_20">Numbers to 20</option>
+                                    <option value="hard_numbers_to_20">Numbers to 20 (Advanced)</option>
+                                    <option value="basic_operations">Basic Operations</option>
+                                    <option value="hard_basic_operations">Basic Operations (Advanced)</option>
+                                    <option value="numbers_to_100">Numbers to 100</option>
+                                    <option value="hard_numbers_to_100">Numbers to 100 (Advanced)</option>
+                                    <option value="measurement">Measurement</option>
+                                    <option value="hard_measurement">Measurement (Advanced)</option>
+                                    <option value="money">HKD Money</option>
+                                    <option value="hard_money">HKD Money (Advanced)</option>
+                                    <option value="time">Time</option>
+                                    <option value="hard_time">Time (Advanced)</option>
+                                    <option value="geometry_2d">2D Shapes</option>
+                                    <option value="hard_geometry_2d">2D Shapes (Advanced)</option>
+                                    <option value="geometry_3d">3D Shapes</option>
+                                    <option value="hard_geometry_3d">3D Shapes (Advanced)</option>
+                                    <option value="positions">Positions</option>
+                                  
+                                    <option value="calendar">Calendar (Basic)</option>
+                                    <option value="hard_calendar">Calendar (Advanced)</option>
+                                </optgroup>
+                                <optgroup label="Grade 2">
+                                    <option value="p2_addition">Addition</option>
+                                    <option value="p2_hard_addition">Addition (Advanced)</option>
+                                    <option value="p2_subtraction">Subtraction</option>
+                                    <option value="p2_hard_subtraction">Subtraction (Advanced)</option>
+                                    <option value="p2_angles">Angles</option>
+                                    <option value="p2_directions">Directions</option>
+                                    <option value="p2_multiplication">Multiplication</option>
+                                    <option value="p2_hard_multiplication">Multiplication (Advanced)</option>
+                                    <option value="p2_time">Time(II)</option>
+                                    <option value="p2_date">Date</option>
+                                    <option value="p2_shapes">Shapes</option>
+                                    <option value="p2_mixed_operations">Mixed operations</option>
+                                    <option value="p2_hard_mixed_ops">Mixed operations (Advanced)</option>
+                                    <option value="p2_division">Division</option>
+                                    <option value="p2_hard_division">Division (Advanced)</option>
+                                    <option value="p2_pictograms">Pictograms</option>
+                                    <option value="p2_measurement">Measurement(Length and distance)</option>
+                                    <option value="p2_money">Money(II)</option>
+                                </optgroup>
+                            </select>
+                            <button id="show-history" class="btn btn-primary ms-2">Reload Question History</button>
+                        </div>
+                        <div id="question-history"></div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="performance-pane" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Student Performance Records</h5>                
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col">
+                                
+                                <div class="form-group mb-3">
+                                    <label for="grade-filter">Grade select：</label>
+                                    <select id="grade-filter" class="form-select">
+                                        <option value="">All grade</option>
+                                        <option value="1">Primary 1</option>
+                                        <option value="2">Primary 2</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group mb-3">
+                                    <label for="class-filter">Class filter：</label>
+                                    <select id="class-filter" class="form-select">
+                                        <option value="">All class</option>
+                                        <optgroup label="一年级">
+                                            <option value="1A">1A</option>
+                                            <option value="1B">1B</option>
+                                            <option value="1C">1C</option>
+                                            <option value="1D">1D</option>
+                                        </optgroup>
+                                        <optgroup label="二年级">
+                                            <option value="2A">2A</option>
+                                            <option value="2B">2B</option>
+                                            <option value="2C">2C</option>
+                                            <option value="2D">2D</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button id="export-report" class="btn btn-success">Export Result Report</button>
+                                <button id="generate-report" class="btn btn-info ml-2">Performance details</button>
+                            </div>
+                        </div>
+                        <div id="student-scores"></div>
+                        <div id="report"></div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="chart-pane" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Students Performance Chart</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="class-select">select class</label>
+                                <select id="class-select" class="form-control">
+                                    <option value="">please select class</option>
+                                    <option value="1A">1A</option>
+                                    <option value="1B">1B</option>
+                                    <option value="1C">1C</option>
+                                    <option value="1D">1D</option>
+                                    <option value="2A">2A</option>
+                                    <option value="2B">2B</option>
+                                    <option value="2C">2C</option>
+                                    <option value="2D">2D</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="student-select">select student</label>
+                                <select id="student-select" class="form-control" disabled>
+                                    <option value="">please select class first</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <label for="chart-category-filter" class="form-label">Filter by category:</label>
+                                <select id="chart-category-filter" class="form-select">
+                                    <option value="">All categories</option>
+                                    
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <canvas id="performance-chart" style="height: 400px;"></canvas>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12">
+                                <div id="student-performance-details" class="mt-4 p-3 border rounded bg-light"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="late-submission-pane" role="tabpanel">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Late Submission Status</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <label for="late-grade-filter">Grade:</label>
+                                <select id="late-grade-filter" class="form-select">
+                                    <option value="">All grades</option>
+                                    <option value="1">Primary 1</option>
+                                    <option value="2">Primary 2</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="late-class-filter">Class:</label>
+                                <select id="late-class-filter" class="form-select">
+                                    <option value="">All classes</option>
+                                    <optgroup label="Primary 1">
+                                        <option value="1A">1A</option>
+                                        <option value="1B">1B</option>
+                                        <option value="1C">1C</option>
+                                        <option value="1D">1D</option>
+                                    </optgroup>
+                                    <optgroup label="Primary 2">
+                                        <option value="2A">2A</option>
+                                        <option value="2B">2B</option>
+                                        <option value="2C">2C</option>
+                                        <option value="2D">2D</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <button id="load-late-submissions" class="btn btn-primary mt-4">Load Late Submissions</button>
+                            </div>
+                        </div>
+                        
+                        <div id="late-submissions-container">
+                            <div class="alert alert-info">Click "Load Late Submissions" button to view students who submitted their work late.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/exceljs/dist/exceljs.min.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/teacher.js"></script>
+</body>
+</html>

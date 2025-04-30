@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Page</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Math Learning Platform(Mathodology)</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/practice">Practice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/materials">Materials</a>
+                </li>
+            </ul>    
+         
+            <div class="navbar-nav ms-auto">
+                <span class="nav-item nav-link" id="username-display"></span>
+                <button class="btn btn-outline-danger logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+        
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Student Page</h1>
+        
+        
+        <ul class="nav nav-tabs mb-4" id="student-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" id="questions-tab" data-bs-toggle="tab" href="#questions-section">Answer questions</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="leaderboard-tab" data-bs-toggle="tab" href="#leaderboard-section">Leaderboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="performance-tab" data-bs-toggle="tab" href="#performance-section">Performance</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="review-tab" data-bs-toggle="tab" href="#review-section">Review</a>
+            </li>
+        </ul>
+        
+        
+        <div class="tab-content">
+            
+            <div class="tab-pane fade show active" id="questions-section">
+                
+                <div class="card p-4 mb-4" id="question-sets-container">
+                    <h3>Question Sets</h3>
+                    <div class="row" id="question-sets-list">
+                        
+                        <div class="col-12 text-center">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="answering-area" style="display: none;">
+
+                    <div class="card p-4 mb-4">
+                        <div id="question-container" class="mb-3">
+                            <h3>Questions:</h3>
+                        </div>
+
+                        <button id="submit-answer" class="btn btn-primary">Submit Answer</button>
+                    </div>
+                    <div id="result" class="alert alert-success" role="alert" style="display: none;"></div>
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="leaderboard-section">
+                <div class="card p-4 mb-4">
+                    <h3>Leaderboard</h3>
+                    <ul class="nav nav-tabs mb-3" id="leaderboard-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="grade-leaderboard-tab" data-bs-toggle="tab" href="#grade-leaderboard">Grade Leaderboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="class-leaderboard-tab" data-bs-toggle="tab" href="#class-leaderboard">Class Leaderboard</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        
+                        <div class="tab-pane fade show active" id="grade-leaderboard">
+                            <div id="leaderboard" class="mb-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Username</th>
+                                            <th>Grade</th>
+                                            <th>Class</th>
+                                            <th>Correct answer</th>
+                                            <th>Total questions attempted</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaderboard-body">       
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="tab-pane fade" id="class-leaderboard">
+                            <div id="class-leaderboard-container" class="mb-3">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Rank</th>
+                                            <th>Username</th>
+                                            <th>Grade</th>
+                                            <th>Class</th>
+                                            <th>Correct answer</th>
+                                            <th>Total questions attempted</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="class-leaderboard-body">       
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="tab-pane fade" id="performance-section">
+                <div class="card p-4 mb-4">
+                    <h3>Answering performance record</h3>
+                    <div id="performance-summary" class="mb-4">
+                        
+                    </div>
+                    
+                    
+                    <div class="mb-4">
+                        <h4>Performance Chart</h4>
+                        
+                        <div class="mb-3">
+                            <label for="chart-category-filter" class="form-label">Filter by category:</label>
+                            <select id="chart-category-filter" class="form-select">
+                                <option value="">All categories</option>
+                                
+                            </select>
+                        </div>
+                        <div style="height: 400px;">
+                            <canvas id="student-performance-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div id="performance-details">
+                       
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="tab-pane fade" id="review-section">
+                <div class="card p-4 mb-4">
+                    <h3>Question Sets Review</h3>
+                    
+                    <div id="completed-sets-container">
+                        <h4>Completed Question Sets</h4>
+                        <div id="completed-sets-list" class="row">
+                            
+                            <div class="col-12 text-center">
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div id="review-details-container" style="display: none;">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 id="review-set-name">Set Details</h4>
+                            <button id="back-to-sets" class="btn btn-secondary btn-sm">Back to Sets</button>
+                        </div>
+                        <div id="review-set-summary" class="alert alert-info"></div>
+                        <div id="review-questions-list" class="mb-4">
+                            
+                        </div>
+                        <div class="mb-3">
+                            <button id="practice-wrong-questions" class="btn btn-warning">Practice Wrong Questions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <button id="show-leaderboard" class="btn btn-primary mb-3" style="display: none;">
+            Show leaderboard
+        </button>
+        <div id="leaderboard-container" style="display: none;"></div>
+        
+        <button id="show-performance" class="btn btn-info mb-3" style="display: none;">
+            Check answering history
+        </button>
+
+        
+        <div class="modal fade" id="performanceModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Answering performance record</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/js/auth.js"></script>
+    <script src="/js/student.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

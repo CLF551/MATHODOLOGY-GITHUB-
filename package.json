@@ -1,0 +1,16 @@
+{
+    "name": "math-platform",
+    "version": "1.0.0",
+    "description": "FYP:e-Learning system for primary Mathematics",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "exceljs": "^4.4.0",
+        "express": "^4.17.1",
+        "mongoose": "^6.0.12"
+    }
+}

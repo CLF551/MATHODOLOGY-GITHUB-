@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Materials</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .materials-table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        .materials-table th.grade-header {
+            font-size: 24px;
+            border: 3px solid #dee2e6;
+            text-align: center;
+            background-color: #e9ecef;
+            padding: 15px;
+        }
+        
+        .materials-table td, .materials-table th {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .materials-table tr:nth-child(even) {
+            background-color: rgba(0,0,0,0.02);
+        }
+        
+        .material-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #f8f9fa;
+            color: #212529;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .material-link:hover {
+            background-color: #e9ecef;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Math Learning Platform(Mathodology)</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/student">Main Page</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/practice">Practice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/materials">Materials</a>
+                </li>
+            </ul>    
+            <div class="navbar-nav ms-auto">
+                <span class="nav-item nav-link" id="username-display"></span>
+                <button class="btn btn-outline-danger logout-btn">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Learning Materials</h1>
+        
+        <div class="card p-4">
+            <table class="materials-table">
+                <tr>
+                    <th class="grade-header">P1 Subjects</th>
+                    <th class="grade-header">P2 Subjects</th>
+                </tr>
+                <tr>
+                    <td><a href="/materials/numTo20" class="material-link">Numbers to 20</a></td>
+                    <td><a href="/materials/addition" class="material-link">Addition</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/basicOperations" class="material-link">Basic Operations</a></td>
+                    <td><a href="/materials/subtraction" class="material-link">Subtraction</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/numTo100" class="material-link">Numbers to 100</a></td>
+                    <td><a href="/materials/angles" class="material-link">Angles</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/measurements" class="material-link">Measurements</a></td>
+                    <td><a href="/materials/directions" class="material-link">Directions</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/hkdMoney" class="material-link">HKD Money</a></td>
+                    <td><a href="/materials/multiplication" class="material-link">Multiplication</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/time" class="material-link">Time</a></td>
+                    <td><a href="/materials/p2Time" class="material-link">Time (II)</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/2dShapes" class="material-link">2D Shapes</a></td>
+                    <td><a href="/materials/p2Date" class="material-link">Date</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/3dShapes" class="material-link">3D Shapes</a></td>
+                    <td><a href="/materials/p2Shapes" class="material-link">Shapes (II)</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/positions" class="material-link">Positions</a></td>
+                    <td><a href="/materials/p2MixedOperations" class="material-link">Mixed Operations</a></td>
+                </tr>
+                <tr>
+                    <td><a href="/materials/calender" class="material-link">Calendar</a></td>
+                    <td><a href="/materials/p2Division" class="material-link">Division</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="/materials/p2Data" class="material-link">Pictograms</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="/materials/p2Measurements" class="material-link">Measurements (II)</a></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><a href="/materials/p2Money" class="material-link">Money (II)</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

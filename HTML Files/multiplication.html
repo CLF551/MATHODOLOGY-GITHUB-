@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Multiplication</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.backButton {
+  background-color: #f1f1f1;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin: 10px;
+  display: inline-block;
+}
+.center{
+    text-align: center
+}
+header {
+  background-color: lightblue;
+  padding: 10px;
+  text-align: center;
+  font-size: 20px;
+  color: black;
+}
+.sizing {
+          margin-right: 12px;
+          margin-left: 12px;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+</style>
+
+</head>
+
+<body>
+  <div class="sizing">
+<a href="/materials" class="backButton">← Back to Materials</a>
+<header>
+<h2 class = "center">Multiplication</h2>
+</header>
+<h4 class="center">Here, we learn about multiplication. For easier learning,
+  I suggest read the multiplacation table!
+</h4>
+<table>
+  <tr>
+      <th>X</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>10</th>
+  </tr>
+  <!-- Generating rows for multiplication table -->
+  <script>
+      for (let i = 1; i <= 10; i++) {
+          document.write('<tr>');
+          document.write('<th>' + i + '</th>');
+          for (let j = 1; j <= 10; j++) {
+              document.write('<td>' + (i * j) + '</td>');
+          }
+          document.write('</tr>');
+      }
+  </script>
+</table>
+<h4>Now, let's move on how to use multiples!</h4>
+<div class="center">
+  <img src="/images/materials/basicMulti.png" alt="example" width="500" height="150">
+  </div>
+<h4>This example shows you about the basic 3 x 2 = 6, here's how it works.<br>
+  We can see the 3 is per group, and the 2 is how many groups, thus
+  making 6 to be the total!<br>
+  In short, we can sum up as 3 + 3 = 3 x 2 = 6
+</h4>
+<h4>Let's try something a bit harder!</h4>
+<div class="center">
+  <img src="/images/materials/hardMulti.png" alt="example" width="500" height="150">
+  </div>
+<h4>Here as you can see 24 x 3 = 72, let's see the instructions</h4>
+<h4>We can show it like 20 x 3 + 3 x 4 = 72</h4>
+<h4>Separate the ten and the unit before multiple to make it easier!</h4>
+<br>
+<h4 class="center">This is the end of the material!</h4>
+</div>
+</body>
+
+
+
+
+</html>
