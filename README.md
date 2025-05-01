@@ -10,7 +10,6 @@ For running the system
 
 
 The following accounts are provided for you to test the system:
-
 [Admin]
   username:admin 
   password:admin 
