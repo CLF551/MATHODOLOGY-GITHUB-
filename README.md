@@ -1,15 +1,16 @@
 For installing the dependecies
-  run the following command in the terminal
-    npm install
+  run the following command in the terminal:
+    "npm install"
 
 
 For running the system
-  run the following command in the terminal
-    npm start
+  run the following command in the terminal:
+    "npm start"
 
 
 
-The following accounts are provided for you to test the system
+The following accounts are provided for you to test the system:
+
 [Admin]
   username:admin 
   password:admin 
